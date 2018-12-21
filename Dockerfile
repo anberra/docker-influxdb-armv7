@@ -4,9 +4,8 @@ FROM balenalib/armv7hf-debian
 MAINTAINER andres.bermejo@gmail.com
 
 # extra metadata
-LABEL version="5.4.2"
+LABEL version="1"
 LABEL description="Image with InfluxDB for armv7"
-ADD VERSION .
 
 # variables
 ARG DISTRO="stretch"
