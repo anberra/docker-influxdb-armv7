@@ -20,13 +20,14 @@ RUN apt-get update && apt-get install -y \
         libfontconfig 
 
 # deploy
-RUN curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add - source /etc/os-release && \
-    echo "deb https://repos.influxdata.com/debian ${DISTRO} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list && \
-    apt-get install -y \
-    influxdb \
-    --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/*
+RUN     curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -  \
+        source /etc/os-release \
+        echo "deb https://repos.influxdata.com/debian ${DISTRO} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 
+RUN     apt-get install -y \
+        influxdb \
+        --no-install-recommends && \
+        rm -rf /var/lib/apt/lists/*
 
 # timezone
 RUN unlink /etc/localtime
