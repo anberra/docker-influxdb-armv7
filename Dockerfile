@@ -20,8 +20,8 @@ RUN apt-get update && apt-get install -y \
         libfontconfig 
 
 # deploy
-RUN     curl -sL https://repos.influxdata.com/influxdb.key | apt-key add - && \
-        printf "deb https://repos.influxdata.com/debian stretch stable" > /etc/apt/sources.list.d/influxdb.list
+RUN     curl -sL https://repos.influxdata.com/influxdb.key | apt-key add -
+RUN     /bin/bash -c 'echo "deb https://repos.influxdata.com/debian stretch stable"' | tee "/etc/apt/sources.list.d/influxdb.list"
 
 RUN     apt-get install -y \
         influxdb \
