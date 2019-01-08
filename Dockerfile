@@ -26,7 +26,7 @@ RUN     wget https://repos.influxdata.com/influxdb.key
 RUN     apt-key add influxdb.key
 RUN     /bin/bash -c 'echo "deb https://repos.influxdata.com/debian stretch stable"' | tee "/etc/apt/sources.list.d/influxdb.list"
 
-RUN     apt-get install -y \
+RUN     apt-get update && apt-get install -y \
         influxdb \
         --no-install-recommends && \
         rm -rf /var/lib/apt/lists/*
