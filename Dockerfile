@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
 
 # deploy
 RUN     curl -sL https://repos.influxdata.com/influxdb.key | apt-key add - && \
-        printf "deb https://repos.influxdata.com/debian $DISTRO stable" > /etc/apt/sources.list.d/influxdb.list
+        printf "deb https://repos.influxdata.com/debian stretch stable" > /etc/apt/sources.list.d/influxdb.list
 
 RUN     apt-get install -y \
         influxdb \
