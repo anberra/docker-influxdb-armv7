@@ -17,11 +17,12 @@ RUN [ "cross-build-start" ]
 RUN apt-get update && apt-get install -y \
         apt-transport-https \
         ca-certificates \
-        curl \
-        libfontconfig 
+        libfontconfig \
+        wget 
+
 
 # deploy
-RUN     curl -sL https://repos.influxdata.com/influxdb.key 
+RUN     wget https://repos.influxdata.com/influxdb.key 
 RUN     apt-key add influxdb.key
 RUN     /bin/bash -c 'echo "deb https://repos.influxdata.com/debian stretch stable"' | tee "/etc/apt/sources.list.d/influxdb.list"
 
