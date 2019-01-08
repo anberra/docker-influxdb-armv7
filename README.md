@@ -1,8 +1,8 @@
 # anberra/influxdb-armv7
-Influxdb installed in a balenalib/armv7hf-debian stretch for armv7 (tested in RPI3)
+Influxdb installed in a balenalib/armv7hf-debian stretch for armv7.
 
 # Description
-It is ready to run in a Raspberry Pi, tested in RPI3.
+It is ready to run in a Raspberry Pi, tested in RPI3 and RPI1.
 
 # Usage
 It is recommended to add persistence to the container for the database:
@@ -15,7 +15,7 @@ $ docker run \
   -d \
   -p 8086:8086 \
   --name=influxdb \
-  --mount type=volume,source=influxdb,destination=/var/lib/grafana \
+  --mount type=volume,source=influxdb,destination=/var/lib/influxdb \
   --restart=unless-stopped \
   anberra/influxdb-armv7
 ```
