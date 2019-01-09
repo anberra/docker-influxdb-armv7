@@ -6,6 +6,7 @@ MAINTAINER andres.bermejo@gmail.com
 # extra metadata
 LABEL version="1"
 LABEL description="Image with InfluxDB for armv7"
+LABEL GitHub="https://github.com/anberra/docker-influxdb-armv7"
 
 # variables
 ARG DISTRO="stretch"
@@ -20,11 +21,12 @@ RUN apt-get update && apt-get install -y \
         wget 
 
 
-# deploy
-RUN     wget https://repos.influxdata.com/influxdb.key 
-RUN     apt-key add influxdb.key
-RUN     /bin/bash -c 'echo "deb https://repos.influxdata.com/debian stretch stable"' | tee "/etc/apt/sources.list.d/influxdb.list"
+# add influxdata repo
+RUN     wget https://repos.influxdata.com/influxdb.key && \
+        apt-key add influxdb.key && \
+        /bin/bash -c 'echo "deb https://repos.influxdata.com/debian $DISTRO stable"' | tee "/etc/apt/sources.list.d/influxdb.list"
 
+# deploy
 RUN     apt-get update && apt-get install -y \
         influxdb \
         --no-install-recommends && \
