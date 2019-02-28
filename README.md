@@ -2,7 +2,7 @@
 Influxdb installed in a balenalib/armv7hf-debian stretch for armv7.
 
 # Description
-It is ready to run in a Raspberry Pi, tested in RPI3 and RPI1.
+It is ready to run in a Raspberry Pi, tested in RPI3.
 
 # Usage
 It is recommended to add persistence to the container for the database:
