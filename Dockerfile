@@ -39,6 +39,7 @@ EXPOSE 8086
 COPY entrypoint.sh /entrypoint.sh
 COPY init-influxdb.sh /init-influxdb.sh
 RUN chmod +x /entrypoint.sh
+RUN chmod +x /init-influxdb.sh
 
 # cross-build to build arm containers on dockerhub
 RUN [ "cross-build-end" ]
