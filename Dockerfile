@@ -34,13 +34,14 @@ RUN     apt-get update && apt-get install -y \
 RUN unlink /etc/localtime
 RUN ln -s /usr/share/zoneinfo/Europe/Madrid /etc/localtime
 
-# cross-build to build arm containers on dockerhub
-RUN [ "cross-build-end" ]
-
 EXPOSE 8086
 
 COPY entrypoint.sh /entrypoint.sh
 COPY init-influxdb.sh /init-influxdb.sh
 RUN chmod +x /entrypoint.sh
+
+# cross-build to build arm containers on dockerhub
+RUN [ "cross-build-end" ]
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["influxd"]
